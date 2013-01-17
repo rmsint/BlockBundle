@@ -21,6 +21,8 @@ class SymfonyCmfBlockExtension extends Extension
 
         $this->loadSonataCache($config, $loader, $container);
 
+        $this->loadAdapters($config, $loader, $container);
+
         if (isset($config['multilang'])) {
             if ($config['multilang']['use_sonata_admin']) {
                 $this->loadSonataAdmin($config['multilang'], $loader, $container, 'multilang.');
@@ -118,6 +120,23 @@ class SymfonyCmfBlockExtension extends Extension
             ;
         } else {
             $container->removeDefinition('symfony_cmf.block.cache.ssi');
+        }
+    }
+
+    public function loadAdapters($config, XmlFileLoader $loader, ContainerBuilder $container)
+    {
+        $loader->load('adapter.services.xml');
+
+        $phpcrListLoader = $container->getDefinition('symfony_cmf.block.list.phpcr');
+        $phpcrListLoader->replaceArgument(1, $config['document_manager_name']);
+
+        if ($config['use_feedbundle_adapter']) {
+            $bundles = $container->getParameter('kernel.bundles');
+            if ('auto' === $config['use_feedbundle_adapter'] && !isset($bundles['EkoFeedBundle'])) {
+                return;
+            }
+
+            $loader->load('adapter.feedbundle.xml');
         }
     }
 }

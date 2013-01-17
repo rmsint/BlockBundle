@@ -1,0 +1,15 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+        <h1>{{ settings.title }}</h1>
+        <div class="list-container">
+            {% for item in items %}
+                <ul>
+                    <li><a href="{{ item.link}}" rel="nofollow" title="{{ item.title }}">{{ item.title }}</a></li>
+                </ul>
+            {% else %}
+                No items available.
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

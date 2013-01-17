@@ -106,7 +106,7 @@ class PHPCRBlockLoader implements BlockLoaderInterface
      *
      * @return BlockInterface|null the block at that location or null if no document or not a BlockInterface at that location
      */
-    protected function findByName($name)
+    public function findByName($name)
     {
         $path = $this->determineAbsolutePath($name);
 

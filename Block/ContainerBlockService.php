@@ -72,6 +72,7 @@ class ContainerBlockService extends BaseBlockService implements BlockServiceInte
             }
 
             return $this->renderResponse($this->getTemplate(), array(
+                'block'       => $block,
                 'childBlocks' => $childBlocks,
                 'settings'    => $settings
             ), $response);
