@@ -67,7 +67,7 @@ form:
     label_parent_document: Übergeordnet
     label_name: Name
     label_title: Titel
-    label_content: Inhalt
+    label_body: Inhalt
     label_referenced_block: Referenzierter Block
     label_action_name: Aktionsname
     label_children: Elemente

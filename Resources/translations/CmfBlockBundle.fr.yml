@@ -66,7 +66,7 @@ form:
     label_parent_document: Parent
     label_name: Nom
     label_title: Titre
-    label_content: Contenu
+    label_body: Contenu
     label_referenced_block: Bloc référencé
     label_action_name: Nom de l'action
     label_children: Elements
